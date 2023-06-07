@@ -1,0 +1,133 @@
+
+
+:root {
+    --error-color: rgb(237, 69, 72);
+    --already-color : rgb(132, 96, 117);
+    --grid-color: rgb(74, 108, 111);
+    --bg-grid-color: rgb(192, 188, 181);
+}
+
+html{
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-grid-color);
+    overflow: hidden;
+}
+
+.game{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.controls{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid var(--error-color);
+    background-color: var(--already-color);
+}
+
+.disabled{
+    color: var(--grid-color);
+}
+
+.stats{
+    color: var(--grid-color);
+    font-weight: bold;
+}
+
+.board-container{
+    position: relative;
+}
+
+.board, .win{
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--already-color);
+    border: 3px solid var(--error-color);
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.board{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px
+}
+
+.board-container.flipped .board{
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.board-container.flipped .win{
+    transform: rotateY(0) rotateZ(0);
+}
+
+
+.card{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.card-front, .card-back{
+    position: absolute;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background: var(--error-color);
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.card-back{
+    transform: rotateY(180deg) rotateZ(50deg);
+    font-size: 28pt;
+    user-select: none;
+    text-align: center;
+    line-height: 100px;
+    background: var(--grid-color);
+}
+
+.card.flipped .card-front{
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.card.flipped .card-back{
+    transform: rotateY(0) rotateZ(0);
+}
+
+.win{
+    position: absolute;
+    top: 0 ;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: var(--grid-color);
+    transform: rotateY(180deg) rotateZ(50deg);
+
+}
+
+.win-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 21pt;
+    color: #282A3A;
+}
+
+.highlight{
+    color: yellow;
+}
