@@ -120,9 +120,16 @@ const flipCard = card => {
             <span class="win-text">
             Bravo ! Tu as gagné ! <br />
                 avec <span class="highlight">${state.totalFlips}</span> mouvements <br />
-                en <span class="highlight">${state.totalTime}</span> secondes
+                en <span class="highlight">${state.totalTime}</span> secondes <br />
+                <button class="reload">Recommencer</button>
             </span>
             `
+            const reloadButton = document.querySelector('.reload')
+            reloadButton.addEventListener('click', refresh)
+
+            function refresh(){
+                document.location.reload()
+            }
 
             clearInterval(state.loop)
         }, 1000)
